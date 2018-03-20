@@ -1,4 +1,4 @@
-#include <include/libc/i386/stdio/itoa/itoa.h>
+#include <include/libc/stdio/itoa/itoa.h>
 
 char tbuf[32];
 char bchars[] = {'0','1','2','3','4','5','6','7',

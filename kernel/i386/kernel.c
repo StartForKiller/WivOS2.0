@@ -2,9 +2,10 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <include/GlobalD.h>
-#include <include/libc/i386/stdio/stdio.h>
+#include <include/libc/stdio/stdio.h>
 #include <include/multiboot/i386/multiboot.h>
 #include <include/cpu/gdt/i386/gdt.h>
+#include <include/libc/string/string.h>
 
 typedef void (*constructor)();
 extern constructor start_ctors;
@@ -21,7 +22,16 @@ extern void putchar(char c);
 
 void kernelMain(multiboot_info_t* multiboot_structure, uint32_t magicnumber)
 {
-    printf(" : %d Yes! Hex: %x yup. Char : %c And a string : %s" , 42, 0x332, 'w', "Stringty String");
+   char str[] = "Hello Woorrrlld"; // Works ;)
+   memset(str,'$',7);
+   printf("\n%s\n", (str));
+     
+   printf("\n%d\n", (int)strlen(str));
+
+   strcpy(str, "Bye, world!");
+   printf("%s\n", str);
+  
+   printf("%s\n", strchr(str,'e'));
     install_gdt();
     __asm__ __volatile__ ("cli");
     __asm__ __volatile__ ("hlt");

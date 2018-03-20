@@ -1,4 +1,9 @@
-#include <include/libc/i386/stdio/putchar/putchar.h>
+#include <include/libc/stdio/putchar/putchar.h>
+
+#include <include/screen/i386/putch/putch.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdarg.h>
 
 extern size_t terminal_column;
 extern size_t terminal_row;
