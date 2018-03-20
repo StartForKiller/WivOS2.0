@@ -4,6 +4,7 @@
 #include <include/GlobalD.h>
 #include <include/libc/i386/stdio/stdio.h>
 #include <include/multiboot/i386/multiboot.h>
+#include <include/cpu/gdt/i386/gdt.h>
 
 typedef void (*constructor)();
 extern constructor start_ctors;
@@ -18,9 +19,10 @@ extern void callConstructors()
 extern void printf(const char* fmt, ...);
 extern void putchar(char c);
 
-extern void kernelMain(multiboot_info_t* multiboot_structure, uint32_t magicnumber)
+void kernelMain(multiboot_info_t* multiboot_structure, uint32_t magicnumber)
 {
     printf(" : %d Yes! Hex: %x yup. Char : %c And a string : %s" , 42, 0x332, 'w', "Stringty String");
+    install_gdt();
     __asm__ __volatile__ ("cli");
     __asm__ __volatile__ ("hlt");
 }
