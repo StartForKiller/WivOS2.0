@@ -1,14 +1,19 @@
-#include "printf.h"
+#include <include/libc/i386/stdio/printf/printf.h>
+#include <include/libc/i386/stdio/putchar/putchar.h>
+#include <include/libc/i386/stdio/itoa/itoa.h>
 
 extern void putchar(char c);
 
 size_t terminal_column=0;
 size_t terminal_row=0;
-uint8_t FG = 0x7;
-uint8_t BG = 0x0;
+uint8_t FG = 0x7; // Foreground - White
+uint8_t BG = 0x0; // Background - BLACK  
+
+
 
 extern void __itoa(unsigned i,unsigned base,char* buf);
 extern char *itoa(int val);
+
 
 void printf(const char* fmt, ...)
 {

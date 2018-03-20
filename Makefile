@@ -1,5 +1,5 @@
 
-GCCPARAMS = -02 -g -Wall -Wextra -Werror -Wno-unused-parameter
+GCCPARAMS = -O2 -g -Wall -Wextra -Wno-unused-parameter
 
 ARCH_FAMILY=x86
 ARCH=i386
@@ -47,5 +47,5 @@ WivOS.iso:
 gdb_q:
 	qemu-system-i386  -kernel  WivOS.bin -display sdl -s -S
 	
-qemu_compile:
+qemu-compile:
 	qemu-system-i386 -kernel WivOS.bin -display sdl
