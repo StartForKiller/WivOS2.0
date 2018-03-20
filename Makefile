@@ -15,7 +15,7 @@ i686 = i686-elf-
 VB=virtualbox
 VBM=VBoxManage
 
-objects = ../../main/i386/kernel.o ../../boot/i386/boot.o \
+objects = ../../kernel/i386/kernel.o ../../boot/i386/boot.o \
 		../../libc/i386/stdio/printf/printf.o \
 		../../libc/i386/stdio/putchar/putchar.o \
 		../../libc/i386/stdio/itoa/itoa.o \
@@ -40,10 +40,10 @@ compile:
 	cd libc;make
 	cd libasm;make
 	cd cpu;make
-	cd main;make
+	cd kernel;make
 
 WivOS.bin:
-	cd linkage;make
+	cd link;make
 	
 WivOS.iso:
 	cp WivOS.bin boot/boot/WivOS.bin
