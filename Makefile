@@ -1,6 +1,6 @@
 
 GCCPARAMS = -O2 -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-but-set-parameter \
-		-Wimplicit-fallthrough=0 -Wpedantic -g
+		-Wimplicit-fallthrough=0 -Wpedantic -g -nostdlib
 
 ARCH_FAMILY=x86
 ARCH=i386
@@ -23,12 +23,17 @@ objects = ../../kernel/i386/kernel.o ../../boot/i386/boot.o \
 		../../cpu/i386/gdt/gdt.o \
 		../../io/i386/io_asm.o
 		
+libraries = --start-group \
+			 ../../libc/stdio/stdio.a \
+			 --end-group 
+		
 export GCCPARAMS
 export NASM_PARAMS
 export objects
 export LDPARAMS
 export ARCH
 export ARCH_FAMILY
+export libraries
 
 q_c:
 	make compile -B
