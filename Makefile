@@ -1,6 +1,6 @@
 
 GCCPARAMS = -O2 -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-but-set-parameter \
-		-Wimplicit-fallthrough=0
+		-Wimplicit-fallthrough=0 -Wpedantic -g
 
 ARCH_FAMILY=x86
 ARCH=i386
