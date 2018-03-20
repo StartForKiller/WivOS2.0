@@ -16,11 +16,12 @@ VB=virtualbox
 VBM=VBoxManage
 
 objects = ../../kernel/i386/kernel.o ../../boot/i386/boot.o \
-		../../libc/i386/stdio/printf/printf.o \
-		../../libc/i386/stdio/putchar/putchar.o \
-		../../libc/i386/stdio/itoa/itoa.o \
-		../../libasm/cpu/gdt/i386/gdt_flush.o \
-		../../cpu/gdt/i386/gdt.o
+		../../libc/stdio/printf/printf.o \
+		../../screen/i386/putch/putch.o \
+		../../libc/stdio/itoa/itoa.o \
+		../../arch/i386/cpu/gdt/gdt_flush.o \
+		../../cpu/i386/gdt/gdt.o \
+		../../io/i386/io_asm.o
 		
 export GCCPARAMS
 export NASM_PARAMS
@@ -37,9 +38,11 @@ q_c:
 	
 compile:
 	cd boot;make
+	cd io;make
 	cd libc;make
-	cd libasm;make
+	cd arch;make
 	cd cpu;make
+	cd screen;make
 	cd kernel;make
 
 WivOS.bin:
